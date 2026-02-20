@@ -15,15 +15,20 @@ export const ApplyLoadingProvider: React.FC<{ children: React.ReactNode }> = ({ 
     const startTransition = useCallback((to: string) => {
         setIsLoading(true);
 
-        // After 2 seconds, trigger navigation
-        setTimeout(() => {
-            navigate(to);
-        }, 2000);
+        const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdSGT_1I65eDMOIj6wZ4VxFuuT4tpyBI7wCOiZvFfxd8FUg1g/viewform?usp=header";
 
-        // After 3 seconds, hide overlay
+        // After 2 seconds, trigger navigation or redirect
         setTimeout(() => {
-            setIsLoading(false);
-        }, 3000);
+            if (to === "/apply") {
+                window.location.href = GOOGLE_FORM_URL;
+            } else {
+                navigate(to);
+                // After 3 seconds, hide overlay (only for internal navigation)
+                setTimeout(() => {
+                    setIsLoading(false);
+                }, 1000);
+            }
+        }, 2000);
     }, [navigate]);
 
     return (

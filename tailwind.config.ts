@@ -68,6 +68,11 @@ export default {
           dark: "hsl(270 60% 40%)",
         },
       },
+      fontFamily: {
+        jakarta: ["Plus Jakarta Sans", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
+        orbitron: ["Orbitron", "sans-serif"],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

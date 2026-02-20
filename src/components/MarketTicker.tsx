@@ -108,8 +108,8 @@ export const MarketTicker = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: (index % marketData.length) * 0.1 }}
                 className={`flex-shrink-0 rounded-xl px-6 py-4 min-w-[240px] backdrop-blur-md border-2 transition-all duration-300 ${item.change >= 0
-                    ? "bg-green-500/5 border-green-500/20 hover:border-green-500/40 shadow-[0_0_15px_rgba(34,197,94,0.1)]"
-                    : "bg-red-500/5 border-red-500/20 hover:border-red-500/40 shadow-[0_0_15px_rgba(239,68,68,0.1)]"
+                  ? "bg-green-500/5 border-green-500/20 hover:border-green-500/40 shadow-[0_0_15px_rgba(34,197,94,0.1)]"
+                  : "bg-red-500/5 border-red-500/20 hover:border-red-500/40 shadow-[0_0_15px_rgba(239,68,68,0.1)]"
                   }`}
               >
                 <div className="text-xs font-bold text-secondary/70 mb-1 uppercase tracking-wider">

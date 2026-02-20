@@ -3,47 +3,59 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import GradientButton from "@/components/GradientButton";
 import { Floating3DElements } from "@/components/Floating3DElements";
-import { Phone, Mail, MapPin, Target, Eye, Users, CheckCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Target, Eye, Users, CheckCircle, Linkedin, MessageSquare } from "lucide-react";
 import TeamMemberCard from "@/components/TeamMemberCard";
 import logo from "@/assets/logo.png";
+import { SEO } from "@/components/SEO";
 const About = () => {
   const teamMembers = [{
     name: "PRASANTH PHILIP",
     role: "FOUNDER & DIRECTOR",
     bio: "Provides Overall Leadership  and Strategic Direction for the Company",
-    image: "/siju.jpg",
-    linkedin: "" // Add LinkedIn URL here
+    image: "/siju.jpeg",
+    imagePosition: "center top",      // ← adjust: 'center top', '50% 20%', 'top', etc.
+    linkedin: "https://www.linkedin.com/in/prasanthphilip?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAAkRL2YBZQeU35ywE0b5Oxcw4_wzkOu9v50&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B35672677-7c87-4726-b3b7-f8bc156e5cf1"
   }, {
     name: "SONIYA PRASANTH",
     role: "DIRECTOR AND GENERAL MANAGER",
     bio: "Oversees Daily Operations and Ensures Smooth,Efficient Management",
-    image: "/Sony.jpg",
-    linkedin: "" // Add LinkedIn URL here
+    image: "/2.jpeg",
+    imagePosition: "center top",      // ← adjust
+    linkedin: ""
   }, {
     name: "VYSHAKH G",
     role: "HEAD OF DERIVATIVES AND TECHNICAL RESEARCH",
     bio: "NISM(SEBI)Certified with 8+ years of Experince In Derivatives Market",
-    image: "/Vyshakh G .jpg",
-    linkedin: "" // Add LinkedIn URL here
+    image: "/3.jpeg",
+    imagePosition: "center top",      // ← adjust
+    linkedin: "https://www.linkedin.com/in/vyshakh-g-varma-9570b7217?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAADanX5MBKZmriayO6X1NNt12bz2OdJVwep8&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B35672677-7c87-4726-b3b7-f8bc156e5cf1"
   }, {
     name: "AJAL BENNY",
     role: "MARKET RESEARCH ANALYST/ MENTOR",
-    bio: "Market Research Analyst with 2 years of active trading experience, specializing in high conviction market insights, data backed trend forecasting, and strategic opportunity identification across financial markets.",
-    image: "/Ajal Benny .jpg",
-    linkedin: "https://www.linkedin.com/in/ajal-benny-1803692a5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" // Add LinkedIn URL here
+    bio: "Market Research Analyst and Mentor specializing in high-conviction insights, data-driven trend analysis, and strategic opportunity identification across financial markets.",
+    image: "/4.jpeg",
+    imagePosition: "center top",      // ← adjust
+    linkedin: "https://www.linkedin.com/in/ajal-benny-1803692a5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
   }, {
     name: "SHALU SHUJITH",
     role: "MARKET RESEARCH ANALYST",
-    bio: "Market Researcher with 2 years of practical trading experience, focused on analyzing price action, studying market behavior, and identifying high probability opportunities.",
-    image: "/Shalu Sujith .jpg",
+    bio: "Market Research Analyst specializing in price action analysis, market behavior insights, and identifying high-probability opportunities across financial markets",
+    image: "/5.jpeg",
+    imagePosition: "center top",      // ← adjust
   }, {
-    name: "NEW MEMBER",
-    role: "ROLE / DESIGNATION",
-    bio: "Bio details to be added...",
-    image: "/placeholder-user.jpg", // Ensure a placeholder image exists or this will break. User said they will add details manually.
-    linkedin: ""
+    name: "JOEL K GEORGE",
+    role: "TRADING ANALYST",
+    bio: "Trading Analyst focused on price action, market trends, and identifying high-probability trade opportunities with a data-driven approach",
+    image: "/6.jpeg",
+    imagePosition: "center top",      // ← adjust
+    linkedin: "https://www.linkedin.com/in/joyal-k-george-375056320?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAFEqP4kBjue4uvwa3r4jpeq0hO4TptSv8ZI&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B35672677-7c87-4726-b3b7-f8bc156e5cf1"
   }];
   return <div className="min-h-screen pt-20">
+    <SEO
+      title="About Bluemantle | Expert Trading Mentorship"
+      description="Learn about Bluemantle LLP, the leading trading academy in Kerala. Our mission is to empower traders with advanced strategies and institutional-grade market knowledge."
+      canonical="https://bluemantletechnology.com/about"
+    />
     {/* Hero */}
     <section className="py-20 bg-gradient-to-b from-background via-purple-dark/10 to-card/50 relative overflow-hidden">
       {/* Background Pulsing Logo */}
@@ -310,7 +322,7 @@ const About = () => {
             <h3 className="text-2xl font-bold mb-6">Visit Us</h3>
             <div className="w-full h-64 rounded-lg overflow-hidden border border-border mb-4">
               <iframe
-                src="https://maps.google.com/maps?q=Bluemantle+Institute+of+Technology,+Ivy+Biophilic+Workspace,+Palakkad&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://www.google.com/maps/place/Bluemantle+LLP/@10.9471956,76.5042829,21889m/data=!3m1!1e3!4m6!3m5!1s0x3ba87f81919896d5:0x4fa2d3fd5b68778f!8m2!3d10.9623142!4d76.5116668!16s%2Fg%2F11yslv668w?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

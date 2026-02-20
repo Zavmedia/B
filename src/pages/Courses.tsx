@@ -8,6 +8,7 @@ import CoursesApplyButton from "@/components/CoursesApplyButton";
 import GradientButton from "@/components/GradientButton";
 import { ArrowRight } from "lucide-react";
 import { PremiumBackground } from "@/components/PremiumBackground";
+import { SEO } from "@/components/SEO";
 
 // ... (inside component)
 
@@ -48,6 +49,11 @@ const Courses = () => {
     desc: "Comprehensive e-books & resources"
   }];
   return <div className="min-h-screen pt-20">
+    <SEO
+      title="Professional Trading Courses"
+      description="Comprehensive Forex and Stock market courses in Kerala. From beginner to advanced strategies, master price action and technical analysis."
+      canonical="https://bluemantletechnology.com/courses"
+    />
     {/* Hero */}
     {/* Hero Section */}
     <section className="relative py-24 lg:py-32 overflow-hidden">
@@ -64,7 +70,7 @@ const Courses = () => {
           <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm">
             <span className="text-cyan-400 text-xs sm:text-sm font-semibold tracking-widest uppercase flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-              Central Govt Approved & Skill India Aligned
+              Central Govt Approved & Skill India Mission ACCREDITED
             </span>
           </div>
 
@@ -82,7 +88,7 @@ const Courses = () => {
           <div className="flex flex-wrap justify-center gap-8 mb-12 text-sm font-medium text-muted-foreground">
             <div className="flex items-center gap-2">
               <CheckCircle className="text-cyan-400" size={18} />
-              <span>Skill India Aligned Training</span>
+              <span>Skill India Mission Training</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle className="text-purple-400" size={18} />
@@ -102,7 +108,7 @@ const Courses = () => {
       <div className="container mx-auto px-4 lg:px-8 space-y-24">
         {[
           {
-            title: "Certificate in Forex & Stock Market Essentials",
+            title: "Certification in Forex & Stock Market Essentials",
             subtitle: "Foundation Level",
             duration: "3 Months",
             color: "cyan",

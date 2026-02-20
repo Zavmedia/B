@@ -8,9 +8,10 @@ interface TeamMemberCardProps {
     image: string;
     linkedin?: string;
     className?: string;
+    imagePosition?: string; // e.g. 'center top', '50% 20%', 'top'
 }
 
-const TeamMemberCard = ({ name, role, bio, image, linkedin, className }: TeamMemberCardProps) => {
+const TeamMemberCard = ({ name, role, bio, image, linkedin, className, imagePosition = 'center top' }: TeamMemberCardProps) => {
     return (
         <div className={cn(
             "w-full max-w-[400px] relative h-[450px] overflow-hidden group mx-auto dark:bg-black bg-white dark:border-0 border rounded-xl dark:text-white text-black flex flex-col shadow-lg",
@@ -21,6 +22,7 @@ const TeamMemberCard = ({ name, role, bio, image, linkedin, className }: TeamMem
                     src={image}
                     alt={name}
                     className='h-full w-full scale-105 group-hover:scale-100 object-cover transition-all duration-500 rounded-xl'
+                    style={{ objectPosition: imagePosition }}
                 />
             </div>
 

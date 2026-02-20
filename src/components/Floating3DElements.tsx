@@ -24,7 +24,7 @@ export const Floating3DElements = () => {
           }}
           initial={{ opacity: 0, scale: 0 }}
           animate={{
-            opacity: [0.1, 0.3, 0.1],
+            opacity: [0.38, 0.75, 0.38],
             scale: [1, 1.2, 1],
             rotateX: [0, 360],
             rotateY: [0, 360],
@@ -37,19 +37,18 @@ export const Floating3DElements = () => {
           }}
         >
           <div
-            className={`w-full h-full rounded-3xl blur-xl ${
-              elem.color === "purple"
-                ? "bg-purple/20 glow-purple"
-                : elem.color === "cyan"
-                ? "bg-secondary/20 glow-cyan"
+            className={`w-full h-full rounded-3xl blur-xl ${elem.color === "purple"
+              ? "bg-purple/60 glow-purple"
+              : elem.color === "cyan"
+                ? "bg-secondary/60 glow-cyan"
                 : elem.color === "purple-light"
-                ? "bg-purple-light/20"
-                : elem.color === "purple-dark"
-                ? "bg-purple-dark/20 glow-purple"
-                : elem.color === "primary"
-                ? "bg-primary/20 glow-blue"
-                : "bg-secondary/20 glow-cyan"
-            }`}
+                  ? "bg-purple-light/60"
+                  : elem.color === "purple-dark"
+                    ? "bg-purple-dark/60 glow-purple"
+                    : elem.color === "primary"
+                      ? "bg-primary/60 glow-blue"
+                      : "bg-secondary/60 glow-cyan"
+              }`}
             style={{
               transform: "rotateX(45deg) rotateZ(45deg)",
             }}

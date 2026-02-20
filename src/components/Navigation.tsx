@@ -24,18 +24,18 @@ export const Navigation = () => {
 
           {/* Logo Section */}
           <Link to="/" className="flex items-center gap-3 group">
-            <motion.div
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
-            >
+            <div className="flex items-center justify-center">
               <img src={logo} alt="Bluemantle Institute" className="h-10 w-10 object-contain" />
-            </motion.div>
-            <div className="hidden sm:block">
-              <h1 className="text-xl font-bold text-white tracking-wide group-hover:text-cyan-400 transition-colors duration-300">
+            </div>
+            <div className="flex flex-col justify-center">
+              <h1 className="text-[14px] sm:text-xl font-bold text-white tracking-wide leading-tight">
                 BLUEMANTLE LLP
               </h1>
-              <p className="text-[10px] text-gray-400 font-medium tracking-[0.2em] uppercase group-hover:text-cyan-500/70 transition-colors duration-300">
+              <p className="text-[8px] sm:text-[10px] text-gray-400 font-medium tracking-[0.2em] uppercase">
                 Institute of Technology
+              </p>
+              <p className="text-[7px] sm:text-[9px] text-cyan-500/90 font-medium tracking-wider uppercase mt-0.5">
+                Central Govt Approved & Skill India Mission ACCREDITED
               </p>
             </div>
           </Link>

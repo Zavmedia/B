@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Matte3DStage } from "@/components/Matte3DStage";
+import { SEO } from "@/components/SEO";
 import { TradingCandlesticks } from "@/components/TradingCandlesticks";
 import { Floating3DElements } from "@/components/Floating3DElements";
 import { AnimatedSphere } from "@/components/AnimatedSphere";
@@ -71,7 +73,7 @@ const Home = () => {
   }, {
     icon: BadgeCheck,
     title: "Central Govt. Approved",
-    desc: "Skill India Registered Program"
+    desc: "Skill India Mission Registered Program"
   }, {
     icon: GraduationCap,
     title: "Certification Support",
@@ -83,15 +85,22 @@ const Home = () => {
   }];
   const specialFeatures = ["WhatsApp Premium Community Support", "News Updates & Trading Plan Guidance", "Funded Accounts Assistance & Guidance", "Trading Psychology Sessions", "Revision Classes & Study Materials", "Dedicated Trading Floor Access"];
   return <div className="min-h-screen">
+    <SEO
+      title="Best Forex & Stock Trading Institute in Kerala"
+      description="Master the markets with Bluemantle LLP. Premium trading academy in Palakkad offering expert-led Forex and Stock market courses with live training."
+      canonical="https://bluemantletechnology.com/"
+    />
     {/* Hero Section */}
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-dark to-navy gradient-animated opacity-50" />
+    <section className="relative min-h-screen pb-40 lg:pb-0 flex items-center overflow-hidden">
+      {/* Animated background gradient - More vibrant but still transparent to show candlesticks */}
+      <div className="absolute inset-0 bg-gradient-to-br from-navy/40 via-navy-dark/50 to-navy/40 gradient-animated opacity-50" />
 
-      {/* Animated candlesticks */}
-      <TradingCandlesticks />
+      {/* Matte 3D Stage Hero Identity - Desktop only (Absolute) */}
+      <div className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 w-1/2 items-center justify-center pointer-events-none z-0 overflow-visible">
+        <Matte3DStage />
+      </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20 sm:pt-0">
         <div className="max-w-3xl">
           <motion.div initial={{
             opacity: 0,
@@ -102,12 +111,7 @@ const Home = () => {
           }} transition={{
             duration: 0.8
           }}>
-            <div className="inline-block mb-3 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm">
-              <span className="text-cyan-400 text-xs sm:text-sm font-semibold tracking-widest uppercase flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                Central Govt Approved & Skill India Aligned
-              </span>
-            </div>
+
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-5 leading-[1.15] break-words tracking-tight">
               Master <span className="text-gradient-cyan">Forex & Stock Market.</span>
@@ -117,7 +121,7 @@ const Home = () => {
             </h1>
 
             <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed max-w-2xl">
-              Empowering you with <strong>advanced strategies</strong> and <strong>state-of-the-art tech</strong> in the local markets of <strong>Kerala</strong>.
+              Empowering you with <strong>advanced strategies</strong> and <strong>state-of-the-art tech</strong> in the Financial markets.
               Join the most innovative hub for <strong>Forex & Stock Market mastery</strong>.
             </p>
 
@@ -129,6 +133,13 @@ const Home = () => {
               <GradientButton
                 text="Join Free Webinar"
               />
+            </div>
+
+            {/* Mobile-only 3D Coin (Flow-based to prevent overlap) */}
+            <div className="lg:hidden w-full flex justify-center mb-12 pointer-events-none overflow-visible">
+              <div className="scale-110 sm:scale-125">
+                <Matte3DStage />
+              </div>
             </div>
 
             {/* Stats */}
@@ -164,7 +175,7 @@ const Home = () => {
     <MarketTicker />
 
     {/* Core Features */}
-    <section className="py-20 relative">
+    <section className="py-20 relative bg-[#030308]/20">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div initial={{
           opacity: 0,
@@ -196,7 +207,7 @@ const Home = () => {
           }} transition={{
             delay: i * 0.1
           }}>
-            <Card className="p-8 bg-card/50 backdrop-blur-sm border-white/5 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] group h-full">
+            <Card className="p-8 bg-card/50 backdrop-blur-sm border-white/5 hover:border-cyan-500/60 transition-all duration-500 hover:shadow-[0_0_35px_-5px_rgba(6,182,212,0.4)] group h-full hover:-translate-y-1">
               <div className="w-12 h-12 rounded-lg bg-cyan-500/10 flex items-center justify-center mb-6 group-hover:bg-cyan-500/20 transition-colors">
                 <feature.icon className="w-6 h-6 text-cyan-400" />
               </div>
@@ -221,7 +232,7 @@ const Home = () => {
       <div className="text-center mb-12">
         <h4 className="text-accent font-bold tracking-[0.2em] text-sm mb-4 uppercase">Exclusive Access</h4>
         <h3 className="text-4xl lg:text-5xl font-bold mb-8">
-          Beginner-Friendly <span className="text-accent">Trading Courses in Palakkad</span>
+          Beginner-Friendly <span className="text-accent">Trading Courses in Kerala</span>
         </h3>
       </div>
 
@@ -254,13 +265,7 @@ const Home = () => {
     <section className="py-20 bg-gradient-to-b from-transparent to-card/50 relative overflow-hidden">
       <Floating3DElements />
 
-      {/* Animated spheres */}
-      <div className="absolute left-10 top-20 opacity-50">
-        <AnimatedSphere size={150} color="purple" delay={0.2} />
-      </div>
-      <div className="absolute right-10 bottom-20 opacity-50">
-        <AnimatedSphere size={120} color="cyan" delay={0.5} />
-      </div>
+
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <motion.div initial={{
@@ -272,54 +277,99 @@ const Home = () => {
         }} viewport={{
           once: true
         }} className="max-w-4xl mx-auto text-center">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-12 sm:gap-16 md:gap-24 mb-10">
-            <div className="relative group">
-              <div className="absolute inset-x-0 -inset-y-4 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 blur-2xl rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
-              <motion.img
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                src="/skill india logo.png"
-                alt="Skill India Mission"
-                className="h-24 sm:h-32 md:h-40 w-auto relative z-10 hover:scale-105 transition-transform duration-300"
-              />
+          {/* Brand Focal Point - Restored as per user request */}
+          <div className="relative mb-16">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-500/10 blur-[80px] rounded-full" />
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative z-10"
+            >
+              <div className="relative w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 mx-auto">
+                {/* Rotating accent rings - Subtle */}
+                <div className="absolute inset-0 border border-cyan-500/20 rounded-full animate-[spin_20s_linear_infinite]" />
+                <div className="absolute inset-2 border border-cyan-400/10 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
+
+                {/* The Logo/Video Identity */}
+                <div className="absolute inset-4 rounded-full overflow-hidden border border-cyan-500/30 shadow-[0_0_40px_rgba(6,182,212,0.25)] bg-black/40 backdrop-blur-xl">
+                  <video
+                    src="/0216.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/20 via-transparent to-transparent opacity-40" />
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="space-y-12">
+            <h2 className="text-4xl lg:text-5xl font-bold">
+              NISM Certification <span className="text-gradient-gold">Guidance</span>
+            </h2>
+
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-12">
+              As a <strong>Central Govt. Approved & Skill India Mission Registered</strong> program, we provide a structured pathway to financial success.
+              Gain your <strong>Bluemantle Institute Certification</strong> alongside expert <strong>NISM Certification Guidance</strong> and comprehensive Exam Assistance.
+              Our curriculum is aligned with national skill development standards, ensuring you build recognized credentials and professional-grade trading expertise.
+            </p>
+
+            {/* Detailed Program Highlights */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto mb-16">
+              {[
+                { label: "Skill India Registered Provider", icon: BadgeCheck },
+                { label: "NISM Exam Assistance & Guidance", icon: Target },
+                { label: "Bluemantle Institute Certificate", icon: Award },
+                { label: "Central Govt Aligned Curriculum", icon: Shield },
+                { label: "NSE/BSE Market Standards", icon: TrendingUp },
+                { label: "Professional Credentials", icon: GraduationCap }
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.05] transition-colors group">
+                  <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20">
+                    <item.icon className="w-4 h-4 text-gold" />
+                  </div>
+                  <span className="text-xs font-bold text-gray-300 text-left leading-tight">{item.label}</span>
+                </div>
+              ))}
             </div>
 
-            <div className="w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-gold/40 shadow-[0_0_30px_rgba(234,179,8,0.3)] relative group">
-              <div className="absolute inset-0 bg-gold/10 blur-xl rounded-full" />
-              <video
-                src="/0216.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover relative z-10 scale-110"
-              />
+            {/* 2. Enhanced Accreditation Ribbon - Same-size boxes, perfectly aligned */}
+            <div className="pt-8 space-y-6">
+              <p className="text-xs font-bold tracking-[0.3em] text-cyan-400/60 uppercase">Official Recognition</p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-16 sm:gap-20 md:gap-32 py-10">
+                {[
+                  { src: "/N.png", alt: "Accreditation 1", sizeClass: "w-36 h-36 sm:w-32 sm:h-32 md:w-40 md:h-40" },
+                  { src: "/SK.png", alt: "Skill India", sizeClass: "w-28 h-28 sm:w-24 sm:h-24 md:w-[100px] md:h-[100px]" },
+                  { src: "/GV.png", alt: "Accreditation 2", sizeClass: "w-32 h-32 sm:w-32 sm:h-32 md:w-35 md:h-35" }
+                ].map((logo, i) => (
+                  <motion.div
+                    key={i}
+                    whileHover={{ scale: 1.1 }}
+                    className={`relative group transition-all duration-300 flex items-center justify-center ${logo.sizeClass}`}
+                  >
+                    <div className="absolute inset-0 bg-white/5 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      className="w-full h-full object-contain relative z-10 brightness-110 contrast-110 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                    />
+                  </motion.div>
+                ))}
+              </div>
             </div>
 
-            <div className="relative group">
-              <div className="absolute inset-x-0 -inset-y-4 bg-gradient-to-r from-purple-500/30 to-gold/30 blur-2xl rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
-              <motion.img
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                src="/WhatsApp Image 2026-02-13 at 12.22.49.jpeg"
-                alt="Certification Logo"
-                className="h-24 sm:h-32 md:h-40 w-auto relative z-10 hover:scale-105 transition-transform duration-300"
+            <div className="pt-8">
+              <GradientButton
+                text="Get Certified"
+                to="/apply"
               />
             </div>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            NISM Certification <span className="text-gradient-gold">Guidance in Kerala</span>
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            Get Bluemantle Institute Certification along with NISM Certification Guidance & Exam Assistance.
-            Build a strong foundation for your financial market career.
-          </p>
-          <GradientButton
-            text="Get Certified"
-            to="/apply"
-          />
         </motion.div>
       </div>
     </section>
@@ -337,7 +387,7 @@ const Home = () => {
           viewport={{ once: true }}
           className="max-w-5xl mx-auto"
         >
-          <div className="relative p-8 md:p-12 lg:p-16 rounded-[2.5rem] bg-[#0A0A15]/60 backdrop-blur-2xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden group">
+          <div className="relative p-8 md:p-12 lg:p-16 rounded-[2.5rem] bg-[#020205]/20 backdrop-blur-3xl border border-white/5 shadow-[0_0_50px_rgba(0,0,0,0.6)] overflow-hidden group">
             {/* Animated Border Glow */}
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
@@ -349,14 +399,14 @@ const Home = () => {
                   className="inline-block"
                 >
                   <h4 className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-cyan-400 font-black tracking-[0.25em] text-xs sm:text-sm uppercase py-2">
-                    Skill India Aligned Institute
+                    Skill India Mission Aligned Institute
                   </h4>
                   <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent mt-1" />
                 </motion.div>
 
                 <p className="text-xl sm:text-2xl lg:text-3xl text-white font-medium leading-relaxed max-w-4xl mx-auto italic tracking-tight">
                   <span className="text-cyan-400 opacity-50 text-4xl leading-none">"</span>
-                  Bluemantle LLP is a government-approved trading institute in Kerala dedicated to delivering practical stock market and forex education. Operating from Palakkad, Bluemantle is aligned with national skill development initiatives and connected to the <span className="text-gradient-cyan font-bold">Skill India ecosystem</span>, helping students gain real-world financial market skills.
+                  Bluemantle LLP is a trading & training institute in Kerala dedicated to delivering practical stock market and forex education. Operating from Palakkad, Bluemantle is aligned with national skill development initiatives and connected to the <span className="text-gradient-cyan font-bold">Skill India ecosystem</span>, helping students gain real-world financial market skills.
                   <span className="text-cyan-400 opacity-50 text-4xl leading-none">"</span>
                 </p>
               </div>
@@ -418,7 +468,7 @@ const Home = () => {
           scale: 1
         }} viewport={{
           once: true
-        }} className="bg-gradient-to-br from-[#050510] via-[#0a0a20] to-[#050510] border-2 border-cyan-500/50 rounded-3xl p-12 lg:p-16 text-center relative overflow-hidden shadow-[0_0_40px_rgba(6,182,212,0.3)] hover:shadow-[0_0_60px_rgba(6,182,212,0.5)] transition-all duration-500">
+        }} className="bg-gradient-to-br from-[#020205] via-[#05050f] to-[#020205] border-2 border-cyan-500/40 rounded-3xl p-12 lg:p-16 text-center relative overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.8)] hover:shadow-[0_0_60px_rgba(6,182,212,0.3)] transition-all duration-500">
           {/* Texture Overlay */}
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
           <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)`, backgroundSize: '24px 24px' }} />

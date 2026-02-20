@@ -8,7 +8,7 @@ interface AnimatedSphereProps {
 
 export const AnimatedSphere = ({ size = 200, color = "purple", delay = 0 }: AnimatedSphereProps) => {
   const scale = size / 200;
-  
+
   const candlesticks = [
     { color: "green", duration: 2.1, baseHeight: 80 },
     { color: "red", duration: 2.7, baseHeight: 100 },
@@ -37,8 +37,8 @@ export const AnimatedSphere = ({ size = 200, color = "purple", delay = 0 }: Anim
           {/* Top wick */}
           <motion.div
             className={`${candle.color === "green" ? "bg-emerald-400" : "bg-rose-400"}`}
-            style={{ 
-              width: 2 * scale, 
+            style={{
+              width: 2 * scale,
               height: 12 * scale,
             }}
             animate={{
@@ -52,15 +52,14 @@ export const AnimatedSphere = ({ size = 200, color = "purple", delay = 0 }: Anim
               delay: delay + index * 0.1,
             }}
           />
-          
+
           {/* Candle body with wave animation */}
           <motion.div
-            className={`rounded-sm relative overflow-hidden ${
-              candle.color === "green" 
-                ? "bg-gradient-to-t from-emerald-600 via-emerald-500 to-emerald-400" 
+            className={`rounded-sm relative overflow-hidden ${candle.color === "green"
+                ? "bg-gradient-to-t from-emerald-600 via-emerald-500 to-emerald-400"
                 : "bg-gradient-to-t from-rose-600 via-rose-500 to-rose-400"
-            }`}
-            style={{ 
+              }`}
+            style={{
               width: 10 * scale,
             }}
             animate={{
@@ -92,12 +91,11 @@ export const AnimatedSphere = ({ size = 200, color = "purple", delay = 0 }: Anim
                 delay: delay + index * 0.15,
               }}
             />
-            
+
             {/* Glow effect */}
             <motion.div
-              className={`absolute inset-0 blur-sm ${
-                candle.color === "green" ? "bg-emerald-400/50" : "bg-rose-400/50"
-              }`}
+              className={`absolute inset-0 blur-sm ${candle.color === "green" ? "bg-emerald-400/50" : "bg-rose-400/50"
+                }`}
               animate={{
                 opacity: [0.3, 0.7, 0.3],
               }}
@@ -108,12 +106,12 @@ export const AnimatedSphere = ({ size = 200, color = "purple", delay = 0 }: Anim
               }}
             />
           </motion.div>
-          
+
           {/* Bottom wick */}
           <motion.div
             className={`${candle.color === "green" ? "bg-emerald-400" : "bg-rose-400"}`}
-            style={{ 
-              width: 2 * scale, 
+            style={{
+              width: 2 * scale,
               height: 8 * scale,
             }}
             animate={{
@@ -129,7 +127,7 @@ export const AnimatedSphere = ({ size = 200, color = "purple", delay = 0 }: Anim
           />
         </motion.div>
       ))}
-      
+
       {/* Ambient glow behind candlesticks */}
       <div className="absolute inset-0 -z-10 blur-3xl opacity-30 bg-gradient-to-t from-emerald-500/30 via-transparent to-rose-500/30" />
     </div>
