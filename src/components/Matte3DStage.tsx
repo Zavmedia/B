@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 
 export const Matte3DStage = () => {
-    // 30 layers for massive 3D thickness: -30px to +30px (60px total depth)
-    const layers = Array.from({ length: 20 }, (_, i) => -20 + (i * (70 / 29)));
+    // 20 layers for 50px of physical depth: -25px to +25px (perfectly symmetric)
+    const layers = Array.from({ length: 20 }, (_, i) => -25 + (i * (60 / 23)));
 
     return (
         <div
@@ -41,7 +41,7 @@ export const Matte3DStage = () => {
                 <div
                     className="w-full h-full relative"
                     style={{
-                        transform: 'perspective(600px) rotateY(-28deg)', // More aggressive perspective for deeper look
+                        transform: 'perspective(600px) rotateY(-2deg)', // More aggressive perspective for deeper look
                         transformStyle: 'preserve-3d'
                     }}
                 >
@@ -76,16 +76,16 @@ export const Matte3DStage = () => {
                                 >
                                     {isFront && (
                                         <div
-                                            className="w-full h-full rounded-full overflow-hidden relative"
+                                            className="w-full h-full rounded-full overflow-hidden relative flex items-center justify-center"
                                             style={{
-                                                background: 'radial-gradient(circle at 35% 30%, #12325e, #050d1a 70%)',
-                                                boxShadow: 'inset 0 4px 12px rgba(255,255,255,0.3)'
+                                                background: 'radial-gradient(circle at 50% 50%, #3263a7ff, #050d1a 70%)',
+                                                boxShadow: 'inset 0 4px 12px rgba(255, 255, 255, 0.3)'
                                             }}
                                         >
                                             <img
                                                 src="/BLUEMANTLE_A1-01.PNG"
                                                 alt="Bluemantle Logo"
-                                                className="w-full h-full object-contain relative z-10 scale-125"
+                                                className="w-full h-full object-contain relative z-10 scale-[1.25] -translate-x-[1.95%] -translate-y-[0.5%]"
                                             />
                                             {/* Glare Sweep */}
                                             <motion.div
@@ -115,7 +115,7 @@ export const Matte3DStage = () => {
                     <div
                         className="hidden md:block absolute top-[98%] left-1/2 -translate-x-1/2 w-full opacity-[0.9] blur-[1.2px] pointer-events-none"
                         style={{
-                            transform: 'translateX(-60%) scaleY(-0.9)',
+                            transform: 'translateX(-50%) scaleY(-0.9)',
                             WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1), transparent 100%)',
                             maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1), transparent 80%)'
                         }}

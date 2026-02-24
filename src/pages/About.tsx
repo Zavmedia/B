@@ -8,46 +8,55 @@ import TeamMemberCard from "@/components/TeamMemberCard";
 import logo from "@/assets/logo.png";
 import { SEO } from "@/components/SEO";
 const About = () => {
+  // ─── TEAM MEMBERS ───────────────────────────────────────────────
+  // imageScale  → zoom level (1.0 = no zoom, 1.2 = 20% zoom in)
+  // imagePosition → CSS object-position (e.g. 'center top', '50% 30%')
   const teamMembers = [{
     name: "PRASANTH PHILIP",
     role: "FOUNDER & DIRECTOR",
     bio: "Provides Overall Leadership  and Strategic Direction for the Company",
     image: "/siju.jpeg",
-    imagePosition: "center top",      // ← adjust: 'center top', '50% 20%', 'top', etc.
+    imageScale: 1.20,           // ← change this number to zoom in/out
+    imagePosition: "center top", // ← change to reposition (e.g. '50% 30%')
     linkedin: "https://www.linkedin.com/in/prasanthphilip?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAAkRL2YBZQeU35ywE0b5Oxcw4_wzkOu9v50&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B35672677-7c87-4726-b3b7-f8bc156e5cf1"
   }, {
     name: "SONIYA PRASANTH",
     role: "DIRECTOR AND GENERAL MANAGER",
     bio: "Oversees Daily Operations and Ensures Smooth,Efficient Management",
     image: "/2.jpeg",
-    imagePosition: "center top",      // ← adjust
+    imageScale: 1.05,           // ← change this number to zoom in/out
+    imagePosition: "center top", // ← change to reposition
     linkedin: ""
   }, {
     name: "VYSHAKH G",
     role: "HEAD OF DERIVATIVES AND TECHNICAL RESEARCH",
     bio: "NISM(SEBI)Certified with 8+ years of Experince In Derivatives Market",
     image: "/3.jpeg",
-    imagePosition: "center top",      // ← adjust
+    imageScale: 1.20,           // ← change this number to zoom in/out
+    imagePosition: "center top", // ← change to reposition
     linkedin: "https://www.linkedin.com/in/vyshakh-g-varma-9570b7217?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAADanX5MBKZmriayO6X1NNt12bz2OdJVwep8&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B35672677-7c87-4726-b3b7-f8bc156e5cf1"
   }, {
     name: "AJAL BENNY",
     role: "MARKET RESEARCH ANALYST/ MENTOR",
     bio: "Market Research Analyst and Mentor specializing in high-conviction insights, data-driven trend analysis, and strategic opportunity identification across financial markets.",
     image: "/4.jpeg",
-    imagePosition: "center top",      // ← adjust
+    imageScale: 1.20,           // ← change this number to zoom in/out
+    imagePosition: "center top", // ← change to reposition
     linkedin: "https://www.linkedin.com/in/ajal-benny-1803692a5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
   }, {
     name: "SHALU SHUJITH",
     role: "MARKET RESEARCH ANALYST",
     bio: "Market Research Analyst specializing in price action analysis, market behavior insights, and identifying high-probability opportunities across financial markets",
     image: "/5.jpeg",
-    imagePosition: "center top",      // ← adjust
+    imageScale: 1.05,           // ← change this number to zoom in/out
+    imagePosition: "center top", // ← change to reposition
   }, {
     name: "JOEL K GEORGE",
     role: "TRADING ANALYST",
     bio: "Trading Analyst focused on price action, market trends, and identifying high-probability trade opportunities with a data-driven approach",
     image: "/6.jpeg",
-    imagePosition: "center top",      // ← adjust
+    imageScale: 1.20,           // ← change this number to zoom in/out
+    imagePosition: "center top", // ← change to reposition
     linkedin: "https://www.linkedin.com/in/joyal-k-george-375056320?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAFEqP4kBjue4uvwa3r4jpeq0hO4TptSv8ZI&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B35672677-7c87-4726-b3b7-f8bc156e5cf1"
   }];
   return <div className="min-h-screen pt-20">
@@ -90,7 +99,7 @@ const About = () => {
               Central Govt Approved & Skill India Aligned
             </span>
           </div>
-          <h1 className="text-5xl lg:text-6xl font-bold mb-6">
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-6">
             Pioneering the <span className="text-gradient-purple">Future of Trading in Kerala</span>
           </h1>
           <p className="text-xl text-muted-foreground">
@@ -204,7 +213,7 @@ const About = () => {
             className="grid grid-cols-2 gap-4"
           >
             <Card className="p-6 bg-gradient-to-br from-card to-muted border-none hover:bg-card/80 transition-colors">
-              <h3 className="text-4xl font-bold text-gradient-cyan mb-2">500+</h3>
+              <h3 className="text-4xl font-bold text-gradient-cyan mb-2">1500+</h3>
               <p className="text-sm text-muted-foreground font-medium uppercase tracking-wider">Students Trained</p>
             </Card>
             <Card className="p-6 bg-gradient-to-br from-card to-muted border-none hover:bg-card/80 transition-colors">
@@ -240,7 +249,7 @@ const About = () => {
         </motion.div>
 
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8 justify-center px-2 sm:px-0">
             {teamMembers.map((member, i) => (
               <motion.div
                 key={i}
@@ -256,6 +265,8 @@ const About = () => {
                   bio={member.bio}
                   image={member.image}
                   linkedin={member.linkedin}
+                  imageScale={member.imageScale}
+                  imagePosition={member.imagePosition}
                 />
               </motion.div>
             ))}
@@ -289,8 +300,8 @@ const About = () => {
                 <Phone className="text-secondary flex-shrink-0 mt-1" size={24} />
                 <div>
                   <p className="font-semibold mb-1">Phone</p>
-                  <p className="text-muted-foreground">+91 70345 40404</p>
-                  <p className="text-muted-foreground">+91 4924 244022</p>
+                  <a href="tel:+917034540404" className="text-muted-foreground hover:text-secondary transition-colors block">+91 70345 40404</a>
+                  <a href="tel:+914924244022" className="text-muted-foreground hover:text-secondary transition-colors block">+91 4924 244022</a>
                 </div>
               </div>
               <div className="flex items-start gap-4">

@@ -34,7 +34,7 @@ const Home = () => {
     }
   }, [toast]);
   const stats = [{
-    value: "24,400+",
+    value: "1500+",
     label: "Students Enrolled"
   }, {
     value: "NISM",

@@ -18,20 +18,19 @@ const SYMBOLS = {
   'NIFTY 50': '^NSEI',
   'SENSEX': '^BSESN',
   'BANK NIFTY': '^NSEBANK',
-  'XAUUSD': 'GC=F',  // Gold Futures
-  'XAGUSD': 'SI=F',  // Silver Futures
+  'XAUUSD': 'XAUUSD=X', // Spot Gold
+  'XAGUSD': 'XAGUSD=X', // Spot Silver
   'USDJPY': 'USDJPY=X',
-  'EURUSD': 'EURUSD=X',
   'DXY': 'DX-Y.NYB',  // US Dollar Index
 };
 
 async function fetchStockData(symbol: string): Promise<any> {
   try {
     console.log(`Fetching data for ${symbol}...`);
-    
+
     // Using Yahoo Finance API
     const url = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=1d`;
-    
+
     const response = await fetch(url, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
@@ -44,7 +43,7 @@ async function fetchStockData(symbol: string): Promise<any> {
     }
 
     const data = await response.json();
-    
+
     if (!data.chart?.result?.[0]) {
       console.error(`No data in response for ${symbol}`);
       return null;
@@ -52,11 +51,10 @@ async function fetchStockData(symbol: string): Promise<any> {
 
     const result = data.chart.result[0];
     const meta = result.meta;
-    const quote = result.indicators.quote[0];
 
-    // Get the latest values
-    const currentPrice = meta.regularMarketPrice || meta.previousClose || 0;
-    const previousClose = meta.chartPreviousClose || meta.previousClose || currentPrice;
+    // Get the latest values with more robust fallback
+    const currentPrice = meta.regularMarketPrice || meta.chartPreviousClose || 0;
+    const previousClose = meta.previousClose || meta.chartPreviousClose || currentPrice;
     const change = currentPrice - previousClose;
     const changePercent = previousClose !== 0 ? (change / previousClose) * 100 : 0;
 
@@ -81,13 +79,13 @@ serve(async (req) => {
 
   try {
     console.log('Starting market data fetch...');
-    
+
     const marketData: MarketData[] = [];
 
     // Fetch all symbols in parallel
     const fetchPromises = Object.entries(SYMBOLS).map(async ([name, symbol]) => {
       const data = await fetchStockData(symbol);
-      
+
       if (data) {
         return {
           index: name,
@@ -96,7 +94,7 @@ serve(async (req) => {
           changePercent: data.changePercent,
         };
       }
-      
+
       // Return fallback data if fetch fails
       return {
         index: name,
@@ -112,7 +110,7 @@ serve(async (req) => {
     console.log('Market data fetch completed successfully');
 
     return new Response(
-      JSON.stringify({ 
+      JSON.stringify({
         success: true,
         data: marketData,
         timestamp: new Date().toISOString(),
@@ -124,11 +122,11 @@ serve(async (req) => {
     );
   } catch (error) {
     console.error('Error in fetch-market-data function:', error);
-    
+
     const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
-    
+
     return new Response(
-      JSON.stringify({ 
+      JSON.stringify({
         success: false,
         error: errorMessage,
         data: [],

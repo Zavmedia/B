@@ -1,4 +1,4 @@
-import { ChevronsRight, Linkedin } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
 interface TeamMemberCardProps {
@@ -8,29 +8,30 @@ interface TeamMemberCardProps {
     image: string;
     linkedin?: string;
     className?: string;
-    imagePosition?: string; // e.g. 'center top', '50% 20%', 'top'
+    imagePosition?: string;
+    imageScale?: number;
 }
 
-const TeamMemberCard = ({ name, role, bio, image, linkedin, className, imagePosition = 'center top' }: TeamMemberCardProps) => {
+const TeamMemberCard = ({ name, role, bio, image, linkedin, className, imagePosition = 'center top', imageScale = 1.05 }: TeamMemberCardProps) => {
     return (
         <div className={cn(
-            "w-full max-w-[400px] relative h-[450px] overflow-hidden group mx-auto dark:bg-black bg-white dark:border-0 border rounded-xl dark:text-white text-black flex flex-col shadow-lg",
+            "w-full max-w-[400px] relative h-[380px] sm:h-[420px] md:h-[450px] overflow-hidden group mx-auto dark:bg-black bg-white dark:border-0 border rounded-xl dark:text-white text-black shadow-lg",
             className
         )}>
-            <div className='w-full h-full'>
+            <div className='w-full h-full absolute inset-0'>
                 <img
                     src={image}
                     alt={name}
-                    className='h-full w-full scale-105 group-hover:scale-100 object-cover transition-all duration-500 rounded-xl'
-                    style={{ objectPosition: imagePosition }}
+                    className='h-full w-full object-cover transition-all duration-500 rounded-xl'
+                    style={{ objectPosition: imagePosition, transform: `scale(${imageScale})` }}
                 />
             </div>
 
-            {/* Overlay Content (Visible on Hover) */}
-            <article className='p-8 w-full h-full overflow-hidden z-10 absolute top-0 flex flex-col justify-end rounded-xl bg-black/70 opacity-0 group-hover:opacity-100 transition-all duration-500'>
-                <div className='translate-y-10 group-hover:translate-y-0 transition-all duration-500 space-y-4'>
-                    <h3 className='text-2xl font-bold text-white'>About</h3>
-                    <p className='text-base text-white/90 leading-relaxed font-medium'>
+            {/* Overlay Content (Visible on Hover / Tap on mobile) */}
+            <article className='p-6 sm:p-8 w-full h-full overflow-hidden z-10 absolute top-0 flex flex-col justify-end rounded-xl bg-black/70 opacity-0 group-hover:opacity-100 active:opacity-100 transition-all duration-500'>
+                <div className='translate-y-10 group-hover:translate-y-0 transition-all duration-500 space-y-3 sm:space-y-4'>
+                    <h3 className='text-xl sm:text-2xl font-bold text-white'>About</h3>
+                    <p className='text-sm sm:text-base text-white/90 leading-relaxed font-medium'>
                         {bio}
                     </p>
                     {linkedin && (
@@ -52,9 +53,9 @@ const TeamMemberCard = ({ name, role, bio, image, linkedin, className, imagePosi
             </article>
 
             {/* Bottom Label (Hidden on Hover) */}
-            <article className='p-6 w-full flex flex-col justify-end absolute bottom-0 rounded-b-xl bg-gradient-to-t from-gray-900/90 to-transparent opacity-100 group-hover:opacity-0 group-hover:-bottom-4 transition-all duration-500'>
-                <h2 className='text-2xl font-bold text-white mb-1'>{name}</h2>
-                <p className='text-cyan-300 font-medium tracking-wide'>{role}</p>
+            <article className='p-4 sm:p-6 w-full flex flex-col justify-end absolute bottom-0 rounded-b-xl bg-gradient-to-t from-gray-900/90 to-transparent opacity-100 group-hover:opacity-0 group-hover:-bottom-4 transition-all duration-500'>
+                <h2 className='text-lg sm:text-2xl font-bold text-white mb-1'>{name}</h2>
+                <p className='text-cyan-300 font-medium tracking-wide text-xs sm:text-sm'>{role}</p>
             </article>
         </div>
     );

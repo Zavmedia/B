@@ -27,14 +27,14 @@ export const Navigation = () => {
             <div className="flex items-center justify-center">
               <img src={logo} alt="Bluemantle Institute" className="h-10 w-10 object-contain" />
             </div>
-            <div className="flex flex-col justify-center">
+            <div className="flex flex-col justify-center -space-y-0.5">
               <h1 className="text-[14px] sm:text-xl font-bold text-white tracking-wide leading-tight">
                 BLUEMANTLE LLP
               </h1>
-              <p className="text-[8px] sm:text-[10px] text-gray-400 font-medium tracking-[0.2em] uppercase">
+              <p className="text-[8px] sm:text-[10px] text-gray-400 font-medium tracking-[0.2em] uppercase leading-tight">
                 Institute of Technology
               </p>
-              <p className="text-[7px] sm:text-[9px] text-cyan-500/90 font-medium tracking-wider uppercase mt-0.5">
+              <p className="text-[7px] sm:text-[9px] text-cyan-500/90 font-medium tracking-wider uppercase leading-tight">
                 Central Govt Approved & Skill India Mission ACCREDITED
               </p>
             </div>
