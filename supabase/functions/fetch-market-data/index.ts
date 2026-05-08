@@ -13,6 +13,24 @@ interface MarketData {
   changePercent: number;
 }
 
+interface YahooChartResponse {
+  chart?: {
+    result?: Array<{
+      meta?: {
+        regularMarketPrice?: number;
+        chartPreviousClose?: number;
+        previousClose?: number;
+      };
+    }>;
+  };
+}
+
+interface MarketQuote {
+  value: number;
+  change: number;
+  changePercent: number;
+}
+
 // NSE symbol mappings and Forex pairs
 const SYMBOLS = {
   'NIFTY 50': '^NSEI',
@@ -24,7 +42,7 @@ const SYMBOLS = {
   'DXY': 'DX-Y.NYB',  // US Dollar Index
 };
 
-async function fetchStockData(symbol: string): Promise<any> {
+async function fetchStockData(symbol: string): Promise<MarketQuote | null> {
   try {
     console.log(`Fetching data for ${symbol}...`);
 
@@ -42,7 +60,7 @@ async function fetchStockData(symbol: string): Promise<any> {
       return null;
     }
 
-    const data = await response.json();
+    const data = await response.json() as YahooChartResponse;
 
     if (!data.chart?.result?.[0]) {
       console.error(`No data in response for ${symbol}`);
@@ -51,6 +69,11 @@ async function fetchStockData(symbol: string): Promise<any> {
 
     const result = data.chart.result[0];
     const meta = result.meta;
+
+    if (!meta) {
+      console.error(`No metadata in response for ${symbol}`);
+      return null;
+    }
 
     // Get the latest values with more robust fallback
     const currentPrice = meta.regularMarketPrice || meta.chartPreviousClose || 0;
