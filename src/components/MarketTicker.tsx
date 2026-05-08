@@ -10,12 +10,19 @@ interface MarketData {
   changePercent: number;
 }
 
+interface MarketDataResponse {
+  success?: boolean;
+  data?: MarketData[];
+}
+
+const fallbackMarketData: MarketData[] = [
+  { index: "NIFTY 50", value: 24857.30, change: 234.50, changePercent: 0.95 },
+  { index: "SENSEX", value: 82890.94, change: 692.27, changePercent: 0.84 },
+  { index: "BANK NIFTY", value: 53234.85, change: -156.30, changePercent: -0.29 },
+];
+
 export const MarketTicker = () => {
-  const [marketData, setMarketData] = useState<MarketData[]>([
-    { index: "NIFTY 50", value: 24857.30, change: 234.50, changePercent: 0.95 },
-    { index: "SENSEX", value: 82890.94, change: 692.27, changePercent: 0.84 },
-    { index: "BANK NIFTY", value: 53234.85, change: -156.30, changePercent: -0.29 },
-  ]);
+  const [marketData, setMarketData] = useState<MarketData[]>(fallbackMarketData);
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdate, setLastUpdate] = useState<Date | null>(null);
 
@@ -34,14 +41,20 @@ export const MarketTicker = () => {
 
   const fetchMarketData = async () => {
     try {
-      const { data, error } = await supabase.functions.invoke("fetch-market-data", { body: {} });
-      if (error) return;
-      if (data?.success && data?.data) {
+      const { data, error } = await supabase.functions.invoke<MarketDataResponse>("fetch-market-data", { body: {} });
+
+      if (error) {
+        console.warn("Unable to fetch live market data:", error.message);
+        return;
+      }
+
+      if (data?.success && Array.isArray(data.data) && data.data.length > 0) {
         setMarketData(data.data);
         setLastUpdate(new Date());
-        setIsLoading(false);
       }
-    } catch {
+    } catch (error) {
+      console.warn("Unable to fetch live market data:", error);
+    } finally {
       setIsLoading(false);
     }
   };
