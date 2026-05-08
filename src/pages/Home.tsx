@@ -45,6 +45,13 @@ const Home = () => {
   }, {
     value: "4.8★",
     label: "Average Rating"
+  }, {
+    value: "CGAC",
+    label: "Approved By Govt of India"
+  },
+  {
+    value: "SIMA",
+    label: "Accredited by Skill India Mission"
   }];
   const features = [{
     icon: Target,
@@ -143,7 +150,7 @@ const Home = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
               {stats.map((stat, i) => <motion.div key={i} initial={{
                 opacity: 0,
                 y: 20
@@ -153,7 +160,7 @@ const Home = () => {
               }} transition={{
                 delay: 0.2 + i * 0.1
               }} className="text-center lg:text-left">
-                <div className="text-2xl sm:text-3xl font-bold text-gradient-cyan mb-1">{stat.value}</div>
+                <div className={`${stat.value.length > 12 ? "text-base sm:text-lg" : "text-2xl sm:text-3xl"} font-bold text-gradient-cyan mb-1`}>{stat.value}</div>
                 <div className="text-xs sm:text-sm text-muted-foreground">{stat.label}</div>
               </motion.div>)}
             </div>
