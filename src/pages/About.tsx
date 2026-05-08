@@ -15,15 +15,15 @@ const About = () => {
     name: "PRASANTH PHILIP",
     role: "FOUNDER & DIRECTOR",
     bio: "Provides Overall Leadership  and Strategic Direction for the Company",
-    image: "/siju.jpeg",
-    imageScale: 1.20,           // ← change this number to zoom in/out
+    image: "/1.jpeg",
+    imageScale: .8,           // ← change this number to zoom in/out
     imagePosition: "center top", // ← change to reposition (e.g. '50% 30%')
     linkedin: "https://www.linkedin.com/in/prasanthphilip?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAAkRL2YBZQeU35ywE0b5Oxcw4_wzkOu9v50&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B35672677-7c87-4726-b3b7-f8bc156e5cf1"
   }, {
     name: "SONIYA PRASANTH",
     role: "DIRECTOR AND GENERAL MANAGER",
     bio: "Oversees Daily Operations and Ensures Smooth,Efficient Management",
-    image: "/2.jpeg",
+    image: "/2.png",
     imageScale: 1.05,           // ← change this number to zoom in/out
     imagePosition: "center top", // ← change to reposition
     linkedin: ""
@@ -47,17 +47,26 @@ const About = () => {
     name: "SHALU SHUJITH",
     role: "MARKET RESEARCH ANALYST",
     bio: "Market Research Analyst specializing in price action analysis, market behavior insights, and identifying high-probability opportunities across financial markets",
-    image: "/5.jpeg",
+    image: "/5.png",
     imageScale: 1.05,           // ← change this number to zoom in/out
     imagePosition: "center top", // ← change to reposition
+    linkedin: "https://www.linkedin.com/in/shalu-mathew-bab14039b/"
   }, {
     name: "JOEL K GEORGE",
     role: "TRADING ANALYST",
     bio: "Trading Analyst focused on price action, market trends, and identifying high-probability trade opportunities with a data-driven approach",
     image: "/6.jpeg",
-    imageScale: 1.20,           // ← change this number to zoom in/out
+    imageScale: 1.10,           // ← change this number to zoom in/out
     imagePosition: "center top", // ← change to reposition
     linkedin: "https://www.linkedin.com/in/joyal-k-george-375056320?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAFEqP4kBjue4uvwa3r4jpeq0hO4TptSv8ZI&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B35672677-7c87-4726-b3b7-f8bc156e5cf1"
+  }, {
+    name: "VISHNU PRAKASH",
+    role: "AI ENGINEER/Software developer",
+    bio: "AI Engineer and Software Developer specializing in developing AI-driven trading tools and innovative software solutions to enhance trading performance and efficiency.",
+    image: "/7.png",
+    imageScale: 1.50,
+    imagePosition: "center top",
+    linkedin: "https://www.linkedin.com/in/vishnu-prakash-e-73120330a/"
   }];
   return <div className="min-h-screen pt-20">
     <SEO
@@ -249,7 +258,7 @@ const About = () => {
         </motion.div>
 
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8 justify-center px-2 sm:px-0">
+          <div className="flex flex-wrap justify-center gap-5 sm:gap-8 px-2 sm:px-0">
             {teamMembers.map((member, i) => (
               <motion.div
                 key={i}
@@ -257,7 +266,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="flex justify-center"
+                className="flex justify-center w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]"
               >
                 <TeamMemberCard
                   name={member.name}

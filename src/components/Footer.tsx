@@ -13,6 +13,9 @@ export const Footer = () => {
   }, {
     path: "/about",
     label: "About & Contact"
+  }, {
+    path: "/disclaimer-policies",
+    label: "Disclaimer & Policies"
   }];
   const socialLinks = [{
     icon: Instagram,

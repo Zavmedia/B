@@ -34,9 +34,6 @@ export const Navigation = () => {
               <p className="text-[8px] sm:text-[10px] text-gray-400 font-medium tracking-[0.2em] uppercase leading-tight">
                 Institute of Technology
               </p>
-              <p className="text-[7px] sm:text-[9px] text-cyan-500/90 font-medium tracking-wider uppercase leading-tight">
-                Central Govt Approved & Skill India Mission ACCREDITED
-              </p>
             </div>
           </Link>
 
@@ -57,9 +54,13 @@ export const Navigation = () => {
               ))}
             </div>
             <GradientButton
-              text="Join Free Webinar"
+              text="SIGN-IN"
+              href="https://learneasywinhub.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="scale-90"
             />
+
           </div>
 
           {/* Mobile Menu Button */}

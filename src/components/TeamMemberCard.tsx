@@ -15,48 +15,66 @@ interface TeamMemberCardProps {
 const TeamMemberCard = ({ name, role, bio, image, linkedin, className, imagePosition = 'center top', imageScale = 1.05 }: TeamMemberCardProps) => {
     return (
         <div className={cn(
-            "w-full max-w-[400px] relative h-[380px] sm:h-[420px] md:h-[450px] overflow-hidden group mx-auto dark:bg-black bg-white dark:border-0 border rounded-xl dark:text-white text-black shadow-lg",
+            "w-full max-w-[380px] group mx-auto rounded-2xl",
+            "bg-gradient-to-b from-[#0c0c1d] to-[#080815]",
+            "border border-cyan-500/20",
+            "shadow-[0_0_15px_rgba(6,182,212,0.15),0_0_30px_rgba(6,182,212,0.05)]",
+            "transition-all duration-500 ease-out",
+            "p-6 sm:p-8 flex flex-col items-center text-center",
             className
         )}>
-            <div className='w-full h-full absolute inset-0'>
-                <img
-                    src={image}
-                    alt={name}
-                    className='h-full w-full object-cover transition-all duration-500 rounded-xl'
-                    style={{ objectPosition: imagePosition, transform: `scale(${imageScale})` }}
-                />
+            {/* Inline keyframes for LinkedIn blink glow */}
+            <style>{`
+                @keyframes linkedinBlink {
+                    0%, 100% { box-shadow: 0 0 6px rgba(10,102,194,0.3), 0 0 12px rgba(10,102,194,0.15); }
+                    50% { box-shadow: 0 0 14px rgba(10,102,194,0.7), 0 0 28px rgba(10,102,194,0.35); }
+                }
+            `}</style>
+            {/* Portrait */}
+            <div className="relative mb-5">
+                {/* Glow ring on hover */}
+                <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover:from-cyan-500/40 group-hover:to-purple-500/30 blur-md transition-all duration-500" />
+                <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden ring-2 ring-white/10 group-hover:ring-cyan-400/40 transition-all duration-500">
+                    <img
+                        src={image}
+                        alt={name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        style={{ objectPosition: imagePosition }}
+                    />
+                </div>
             </div>
 
-            {/* Overlay Content (Visible on Hover / Tap on mobile) */}
-            <article className='p-6 sm:p-8 w-full h-full overflow-hidden z-10 absolute top-0 flex flex-col justify-end rounded-xl bg-black/70 opacity-0 group-hover:opacity-100 active:opacity-100 transition-all duration-500'>
-                <div className='translate-y-10 group-hover:translate-y-0 transition-all duration-500 space-y-3 sm:space-y-4'>
-                    <h3 className='text-xl sm:text-2xl font-bold text-white'>About</h3>
-                    <p className='text-sm sm:text-base text-white/90 leading-relaxed font-medium'>
-                        {bio}
-                    </p>
-                    {linkedin && (
-                        <a
-                            href={linkedin}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-start w-[45px] h-[45px] border-none rounded-full cursor-pointer relative overflow-hidden transition-all duration-300 shadow-[2px_2px_10px_rgba(0,0,0,0.199)] bg-[#0a66c2] hover:w-[135px] hover:rounded-[40px] group/btn active:translate-x-[2px] active:translate-y-[2px]"
-                        >
-                            <div className="w-full transition-all duration-300 flex items-center justify-center group-hover/btn:w-[30%] group-hover/btn:pl-2.5">
-                                <Linkedin className="w-5 h-5 text-white" />
-                            </div>
-                            <div className="absolute right-0 w-0 opacity-0 text-white text-[1.2em] font-semibold transition-all duration-300 group-hover/btn:opacity-100 group-hover/btn:w-[70%] group-hover/btn:pr-2.5">
-                                LinkedIn
-                            </div>
-                        </a>
-                    )}
-                </div>
-            </article>
+            {/* Name */}
+            <h3 className="text-lg sm:text-xl font-bold text-white tracking-wide mb-1 transition-colors duration-300 group-hover:text-cyan-100">
+                {name}
+            </h3>
 
-            {/* Bottom Label (Hidden on Hover) */}
-            <article className='p-4 sm:p-6 w-full flex flex-col justify-end absolute bottom-0 rounded-b-xl bg-gradient-to-t from-gray-900/90 to-transparent opacity-100 group-hover:opacity-0 group-hover:-bottom-4 transition-all duration-500'>
-                <h2 className='text-lg sm:text-2xl font-bold text-white mb-1'>{name}</h2>
-                <p className='text-cyan-300 font-medium tracking-wide text-xs sm:text-sm'>{role}</p>
-            </article>
+            {/* Role */}
+            <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400/80 mb-4">
+                {role}
+            </p>
+
+            {/* Divider */}
+            <div className="w-10 h-px bg-white/10 group-hover:w-16 group-hover:bg-cyan-400/40 transition-all duration-500 mb-4" />
+
+            {/* Bio */}
+            <p className="text-sm text-white/50 leading-relaxed mb-5 line-clamp-3">
+                {bio}
+            </p>
+
+            {/* LinkedIn */}
+            {linkedin && (
+                <a
+                    href={linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium text-[#0a66c2] bg-[#0a66c2]/10 border border-[#0a66c2]/30 hover:bg-[#0a66c2]/20 hover:border-[#0a66c2]/50 transition-all duration-300"
+                    style={{ animation: 'linkedinBlink 2s ease-in-out infinite' }}
+                >
+                    <Linkedin className="w-3.5 h-3.5" />
+                    <span>LinkedIn</span>
+                </a>
+            )}
         </div>
     );
 };

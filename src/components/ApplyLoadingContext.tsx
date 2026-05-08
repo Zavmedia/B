@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useCallback } from 'react';
+import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ApplyLoadingOverlay from './ApplyLoadingOverlay';
 
@@ -12,6 +12,27 @@ export const ApplyLoadingProvider: React.FC<{ children: React.ReactNode }> = ({ 
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
+    // Handle BFCache navigations, back button, and tab switching
+    useEffect(() => {
+        const resetLoading = () => setIsLoading(false);
+
+        const handleVisibilityChange = () => {
+            if (document.visibilityState === 'visible') {
+                resetLoading();
+            }
+        };
+
+        window.addEventListener('pageshow', resetLoading);
+        window.addEventListener('popstate', resetLoading);
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+
+        return () => {
+            window.removeEventListener('pageshow', resetLoading);
+            window.removeEventListener('popstate', resetLoading);
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+        };
+    }, []);
+
     const startTransition = useCallback((to: string) => {
         setIsLoading(true);
 
@@ -21,6 +42,10 @@ export const ApplyLoadingProvider: React.FC<{ children: React.ReactNode }> = ({ 
         setTimeout(() => {
             if (to === "/apply") {
                 window.location.href = GOOGLE_FORM_URL;
+                // Add a small delay then reset loading so it's not active if navigation fails or is slow
+                setTimeout(() => {
+                    setIsLoading(false);
+                }, 500);
             } else {
                 navigate(to);
                 // After 3 seconds, hide overlay (only for internal navigation)

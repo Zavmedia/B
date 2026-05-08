@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import DotMatrixLogo from './DotMatrixLogo';
 
 const ApplyLoadingOverlay: React.FC = () => {
     return (
@@ -7,7 +8,7 @@ const ApplyLoadingOverlay: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9999] bg-[#050510] flex flex-col items-center justify-center overflow-hidden"
+            className="fixed inset-0 z-[9999] bg-black flex flex-col items-center justify-center overflow-hidden"
         >
             <style>{`
         #h2-loading {
@@ -44,34 +45,21 @@ const ApplyLoadingOverlay: React.FC = () => {
         }
       `}</style>
 
-            {/* Background Video */}
-            <div className="absolute inset-x-0 top-0 bottom-0 opacity-30 pointer-events-none">
-                <video
-                    src="/0216.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050510] via-[#050510]/40 to-[#050510]" />
+            {/* Dot Matrix Logo Background */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <DotMatrixLogo />
             </div>
 
-            <div className="relative z-10 flex flex-col items-center gap-8">
-                {/* Animated Branding Wrapper */}
-                <div className="p-1 w-24 h-24 rounded-full bg-gradient-to-tr from-cyan-500 to-transparent animate-spin-slow mb-4">
-                    <div className="w-full h-full rounded-full bg-[#050510] flex items-center justify-center backdrop-blur-3xl">
-                        <div className="w-12 h-12 rounded-full bg-cyan-500/20 animate-pulse flex items-center justify-center">
-                            <div className="w-4 h-4 rounded-full bg-cyan-400 shadow-[0_0_15px_#06b6d4]" />
-                        </div>
-                    </div>
-                </div>
+            {/* Dark gradient vignette — fades edges to black */}
+            <div
+                className="absolute inset-0 pointer-events-none"
+                style={{ background: 'radial-gradient(ellipse at center, transparent 30%, #000 80%)' }}
+            />
 
-                {/* Text and Progress Bar */}
-                <div className="flex flex-col items-center gap-6">
-                    <div className="progress-div flex items-center justify-center">
-                        <h2 id="h2-loading">Initializing Portal</h2>
-                    </div>
+            {/* Progress Bar — sits above canvas */}
+            <div className="relative z-10 flex flex-col items-center gap-6 mt-auto mb-16">
+                <div className="progress-div flex items-center justify-center">
+                    <h2 id="h2-loading">Initializing Portal</h2>
                 </div>
             </div>
 
